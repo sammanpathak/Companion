@@ -1,0 +1,12 @@
+.interests{
+    display: flex;
+    flex-direction:column;
+    //height:100vh;
+    width:50%;
+    //background-size:cover;
+    align-items:center;
+    padding: 20px;
+    gap: 10px;
+    justify-content:space-between;
+    // overflow:none;
+}

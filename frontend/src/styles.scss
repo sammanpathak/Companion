@@ -1,0 +1,30 @@
+$theme:(
+    light:(
+        textcolor:#000,
+        bg:white,
+        logo:darkBlue,
+        bgSoft:#f6f3f3,
+        textColorsoft:#555,
+        border:lightgray,
+    ),
+    dark:(
+        textcolor:whitesmoke,
+        bg:#222,
+        logo:white,
+        bgSoft:#333,
+        textColorsoft:lightgray,
+        border:#444,
+    ),
+);
+
+@mixin themify($themes) {
+    @each $name, $values in $themes {
+      .#{$name}-theme {
+        $theme-map: $values !global;
+        @content;
+      }
+    }
+  }
+  @function themed($key) {
+    @return map-get($theme-map, $key);
+  }

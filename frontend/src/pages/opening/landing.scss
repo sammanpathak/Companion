@@ -1,0 +1,75 @@
+.Index{
+    height: 100vh;
+    background-image: url('../../assets/landing_1.jpg');
+    background-position: center;
+    background-size: cover;
+    display:flex;
+    flex:1;
+    font-family: Arial, Helvetica, sans-serif;
+
+    h1{
+        text-align: center;
+        padding-top: 100px;
+        font-weight: medium;
+        color: rgb(9, 233, 46);
+    }
+    h3{
+        padding-top: 200px;
+        font-weight: medium;
+        color: rgb(243, 37, 37);
+
+    }
+        .middle{
+            // justify-content: center;
+            // align-items: center;
+
+            background: url('../../assets/logo1.png');
+            background-position: center;
+            background-size: cover;
+            height: 600px;
+            width: 800px;
+            flex: 1;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            
+
+
+        }
+            .login{
+                span{
+                    text-align: center;
+                    
+                }
+                button{
+                    border:none;
+                    
+                    padding:10px;
+                    background-color:purple;
+                    color:white;
+                    cursor:pointer;
+                }
+
+                
+
+            }
+            .register{
+                span{
+                    text-align: cente;
+                }
+                button{
+                    border:none;
+                    
+                    padding:10px;
+                    background-color:purple;
+                    color:white;
+                    cursor:pointer;
+                }
+                
+
+            }
+}

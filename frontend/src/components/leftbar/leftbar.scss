@@ -1,0 +1,75 @@
+.leftbar{
+    flex:2;
+    position: sticky;
+    top: 70px;
+    height: 500px;
+    // gap:20px;
+    overflow: scroll;
+    &::-webkit-scrollbar{
+        display:none;
+    }
+    img{
+        border-radius: 50%;
+        width:35px;
+        height:35px;
+        object-fit: cover;
+    }
+    .container{
+        flex-direction: column;
+        gap: 50px;
+        padding: 20px;
+        
+        // gap: 20px;
+        .user{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }   
+        .suggestion{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }   
+        .find{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }  
+        .interest{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }    
+        .startAConvo{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }   
+        .homeIcon{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }   
+        .suggestion{
+            display:flex;
+            align-items: center;
+            gap:10px;
+            padding:20px 0px;
+            border-bottom:1px solid lightgray;
+        }   
+    }
+
+
+}

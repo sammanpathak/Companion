@@ -1,0 +1,76 @@
+.rightbar{
+    flex:3;
+    position: sticky;
+    top: 70px;
+    height: 400px;
+    overflow: scroll;
+    &::-webkit-scrollbar{
+        display:none;
+    }
+    img{
+        border-radius: 50%;
+        width:30px;
+        height:30px;
+        object-fit: cover;
+    }
+    .container{
+        padding: 20px;
+        
+       
+        .item{
+            border:2px solid lightgray;
+            filter: drop-shadow(1px 1px 0.09px #eadddd);
+            padding: 20px;
+            
+            spam{
+                color:gray;
+                font-size: small;
+            }
+        .user{
+            display:flex;
+                align-items: center;
+                justify-content: space-between;
+                margin:20px;
+            .userInfo{
+                display:flex;
+                align-items: center;
+                gap:20px;
+
+                spam{
+                    color:black;
+                    font-weight: 500;
+                    font-size: medium;
+                }
+
+            }
+
+            .online{
+                display:flex;
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: limegreen;
+            }
+
+            .buttons{
+                display:flex;
+                align-items: center;
+                gap:10px;
+
+                button{
+                    border: none;
+                    padding: 5px;
+                    color:voilet;
+                    cursor:pointer;
+                    &:first-child{
+                        background-color: white;
+                    }
+                    &:second-child{
+                        background-color:red;
+                    }
+                }
+            }
+        }
+        }
+    }
+}

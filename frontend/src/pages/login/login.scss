@@ -1,0 +1,86 @@
+
+.login{
+    height:100vh;
+    display:flex;
+    flex:1;
+    align-items:center;
+    justify-content:center;
+    background-color:#E600E5;
+    font-family: Arial, Helvetica, sans-serif;
+    .card{
+        flex:0.5;
+        overflow:hidden;
+        display: flex;
+        border-radius:10px;
+        // width:50%;
+        .left{
+            background:linear-gradient(rgba(39, 11, 96, 0.5),rgba(39, 11, 96, 0.5)),url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpd5Ogin7toidWnCFK09l5pt6wPnY_u1d2Fg&usqp=CAU') center;
+            //background-color:#dedeed;
+            width:300px;
+            padding: 10px;
+            max-height:600px;
+            background-size:cover;
+            flex:0.5;
+            padding:50px;
+            display:flex;
+            flex-direction:column;
+            gap:30px;
+            color:rgb(253, 253, 253);
+            h1{
+                font-size:60px;
+                line-height:60px;
+            }
+            p{
+                font-weight:medium;
+            }
+            span{
+               font-weight:small;
+                font-size:14px;
+                color:lightgray;
+            }
+            button{
+                width:50%;
+                padding:10px;
+                border:none;
+                background-color:white;
+                color:purple;
+                font-weight:bold;
+                cursor:pointer;
+            }
+            
+       }
+       .right{
+            // flex:0.5;
+            padding:50px;
+            width:300px;
+            display:flex;
+            flex-direction:column;
+            gap:50px;
+            background-color:#dedeed;
+            justify-content:center;
+            align-items:center;
+            h1{
+                color:rgb(167, 83, 162);
+            }
+            form{
+                display:flex;
+                flex-direction:column;
+                gap:30px;
+            }
+            input{
+                border:none;
+                border-bottom:1px solid lightgray;
+                padding:20px 10px;
+                max-height:5px;
+            }
+            button{
+                border:none;
+                width:50%;
+                padding:10px;
+                background-color:purple;
+                color:white;
+                cursor:pointer;
+            }
+       }
+    }
+}
