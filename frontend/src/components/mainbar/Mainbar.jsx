@@ -4,6 +4,7 @@ import {MdDashboard} from "react-icons/md";
 import {MdHome} from "react-icons/md";
 import {MdDarkMode} from "react-icons/md";
 import {MdSearch} from "react-icons/md";
+import Addpost from '../../components/addpost/Addpost';
 import {MdCircleNotifications} from "react-icons/md";
 import { Link } from 'react-router-dom';
 import {MdChat} from "react-icons/md";
@@ -30,36 +31,37 @@ const Mainbar=()=> {
         <span>Companion</span>
       </Link>
       <Link to = '/' style={{textDecoration:"none", cursor:'pointer'}}>
-      <MdHome size={28}/>
+      <MdHome size={28} color='black'/>
       </Link>
       <Link to = '/' style={{textDecoration:"none", cursor:'pointer'}}>
-      <MdDashboard size={28}/>
+      <MdDashboard size={28} color='black'/>
       </Link>
       <div className='search'>
       <Link to = '/' style={{textDecoration:"none", cursor:'pointer'}}>
-        <MdSearch size={28}/>
+        <MdSearch size={28} color='black'/>
       </Link>
       <input type='text' placeholder='search'></input>
+      {/* <Addpost/> */}
       </div>
       
     </div>
     <div className='right'>
     
     <Link to = '/profile/:id' style={{textDecoration: "none", cursor:'pointer'}}>
-      <MdAccountCircle size={28}/>
+      <MdAccountCircle size={28} color='black'/>
     </Link>
 
     <Link to = '/home' style={{textDecoration:"none", cursor:'pointer'}}>
-      <MdDarkMode size={28}/>
+      <MdDarkMode size={28} color='black'/>
     </Link>
     <Link to = '/chat' style={{textDecoration:"none", cursor:'pointer'}}>
-      <MdChat size={28}/>
+      <MdChat size={28} color='black'/>
     </Link>
     <Link to = '/notifications' style={{textDecoration:"none", cursor:'pointer'}}>
-      <MdCircleNotifications size={28}/>
+      <MdCircleNotifications size={28} color='black'/>
     </Link>
     <Link to = '/login' style={{textDecoration:"none", cursor:'pointer'}} onClick={logout} > 
-      <MdLogout size={28}/>
+      <MdLogout size={28} color='black'/>
     </Link>
       <div className='user'>
       

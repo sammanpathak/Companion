@@ -51,21 +51,22 @@ function App() {
 
   const router = createBrowserRouter([
     {
+      path:'/',
+      element:  <Register/>,
+  },
+    {
       path: "/",
-      element: <ProtectedRoute>
+      element: 
+      <ProtectedRoute>
         <Layout/>
         </ProtectedRoute>,
-      children:[{
-       
-        path:'/',
-        element: <ProtectedRoute> <Landing/>,
-        </ProtectedRoute>
-    },
+      children:[
     {
       path:"/home",
-        element:<ProtectedRoute>
-          <Home/>,
-        </ProtectedRoute>   
+        element:
+        <ProtectedRoute>
+          <Home/>
+        </ProtectedRoute>,   
     },
     {
       path:"/profile/:id",
@@ -73,6 +74,8 @@ function App() {
     },
   ]
     },
+
+
     {
       path: "/login",
       element: <Login/>,

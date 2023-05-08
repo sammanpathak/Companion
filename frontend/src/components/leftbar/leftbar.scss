@@ -1,5 +1,7 @@
 .leftbar{
     flex:2;
+    
+    // text-decoration-color: antiquewhite;
     position: sticky;
     top: 70px;
     height: 500px;
@@ -15,12 +17,15 @@
         object-fit: cover;
     }
     .container{
+        
         flex-direction: column;
         gap: 50px;
         padding: 20px;
         
+        span{color:black;}
         // gap: 20px;
         .user{
+            color:black;
             display:flex;
             align-items: center;
             gap:10px;
@@ -28,6 +33,7 @@
             border-bottom:1px solid lightgray;
         }   
         .suggestion{
+            color:black;
             display:flex;
             align-items: center;
             gap:10px;
@@ -35,6 +41,7 @@
             border-bottom:1px solid lightgray;
         }   
         .find{
+            color:black;
             display:flex;
             align-items: center;
             gap:10px;
@@ -42,13 +49,21 @@
             border-bottom:1px solid lightgray;
         }  
         .interest{
+            color:black;
             display:flex;
+            a {
+                color: #FFF;
+              }
+              a:hover {
+                 color: #00F
+              }
             align-items: center;
             gap:10px;
             padding:20px 0px;
             border-bottom:1px solid lightgray;
         }    
         .startAConvo{
+            span{color:black;}
             display:flex;
             align-items: center;
             gap:10px;
@@ -56,6 +71,7 @@
             border-bottom:1px solid lightgray;
         }   
         .homeIcon{
+            
             display:flex;
             align-items: center;
             gap:10px;
@@ -63,6 +79,7 @@
             border-bottom:1px solid lightgray;
         }   
         .suggestion{
+            color:black;
             display:flex;
             align-items: center;
             gap:10px;

@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import './home.scss';
+import Addpost from '../../components/addpost/Addpost';
 import Posts from '../../components/posts/Posts';
 const Home=()=> {
 
@@ -28,7 +29,9 @@ const Home=()=> {
       });
   return (
     <div className='home'>
-      <Posts/>
+      <div className='add'><Addpost/></div>
+      <div className='post'><Posts/></div>
+      
     </div>
   )
 }
