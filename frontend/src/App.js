@@ -1,4 +1,5 @@
 import Landing from "./pages/opening/landing";
+import Interests from './pages/interests/Interest.jsx'
 import Login from "./pages/login/Login";
 import Logout from "./pages/logout/logout";
 import Register from "./pages/register/Register";
@@ -72,6 +73,10 @@ function App() {
       path:"/profile/:id",
       element: <Profile/>,
     },
+    {
+      path:"/interest",
+      element:<Interests/>,
+    },
   ]
     },
 
@@ -88,10 +93,10 @@ function App() {
       path: "/logout",
       element: <Logout/>,
     },
-    {
-      path:"/interest",
-      element:<Interest/>
-    },
+    // {
+    //   path:"/interest",
+    //   element:<Interest/>
+    // },
     {
       path: "/chat",
       element: <Chat/>,
