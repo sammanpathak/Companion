@@ -1,11 +1,14 @@
 import './interest.scss'
 import React from 'react'
+import {MdImage} from 'react-icons/md'
+import {MdAddCircle} from 'react-icons/md'
 //import Interest from '../../components/interest/Interest.jsx'
 
 //const interests=['Football','Cricket','Psychology','Cognitive Science'];
 
 function Interests() {
   return (
+    <div className="all">
     <div className='interests'>
 
             <div className="title"><h1>Select 2-6 interests</h1></div>
@@ -60,10 +63,29 @@ function Interests() {
             </div>
             
         </div>
-        <div className='submit'>
-              <button>Submit</button>
+      
+    </div>   
+    <div className="addBio">
+        <input type="text" placeholder='Add the bio for your profile' />
+    </div>
+        <div className="uploadPics">
+            <div className="profilePic">
+                <div className="text"><p>Add your profile picture</p></div>
+            <div className="icons"><MdImage size='28'/>
+            <MdAddCircle size='28'/></div>
             </div>
-    </div>    
+            <div className="coverPic">
+                <div className="text"><p>Add your cover picture</p></div>
+            <div className="icons"><MdImage size='28'/>
+            <MdAddCircle size='28'/></div>
+            </div>
+
+        </div>
+        <div className='submit'>
+            <button>Submit</button>
+        </div>
+        </div>
+    
   )
 }
 

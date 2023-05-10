@@ -1,0 +1,19 @@
+.bio{
+    height:fit-content;
+    padding:20px;
+    //gap:10px;
+    // border:1px solid lightgray;
+    .content{
+        // filter: drop-shadow(1px 1px 0.09px #eadddd);
+     
+        .text{
+           // display:flex;
+            //flex-direction:column;
+            border:1px solid lightgray;
+            
+                  
+        p{color:gray; font-weight:light; padding:10px;}
+        span{font-weight:bold; }
+    }
+    }
+}

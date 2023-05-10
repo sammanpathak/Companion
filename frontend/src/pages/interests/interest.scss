@@ -1,3 +1,25 @@
+.all{
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    gap:20px;
+.submit{padding-left: 300px;}
+.addBio{
+    input{border:2px solid lightgray;
+        width:100%;
+        height:fit-content;
+        filter: drop-shadow(1px 1px 0.09px #eadddd);}
+}
+.uploadPics{
+    border:2px solid lightgray;
+    filter: drop-shadow(1px 1px 0.09px #eadddd);
+    display: flex;
+    flex-direction: column;
+    -webkit-text-size-adjust: auto;
+    .profilePic{display: flex; 
+    padding: 10px; gap:10px;.icons{display:flex; gap:10px;}}
+    .coverPic{display: flex; padding: 10px; gap:10px;.icons{display:flex; gap:10px;}}
+}
 .interests{
     display: flex;
     flex-direction:column;
@@ -16,7 +38,7 @@
         display:none;
     }
     border:2px solid lightgray;
-            filter: drop-shadow(1px 1px 0.09px #eadddd);
+    filter: drop-shadow(1px 1px 0.09px #eadddd);
     // overflow:none;
     .title{}
     .interest{
@@ -59,4 +81,5 @@
             }
         }
     }
+}
 }

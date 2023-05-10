@@ -1,10 +1,25 @@
 .profile{
     position: sticky;
+    // display:flex;
+    // flex-direction:column;
     top: 70px;
     height: 600px;
     overflow: scroll;
     &::-webkit-scrollbar{
         display:none;
+    }
+    .bio{
+        width:70%;
+        align-items:center;
+        height:fit-content;
+        top:370px;
+        // overflow:none;
+        // position:sticky;
+        justify-content:space-between;
+        padding: 20px 70px;
+        //filter: drop-shadow(1px 1px 0.09px #eadddd);
+        // border:2px solid lightgray;
+        // filter: drop-shadow(1px 1px 0.09px #eadddd);
     }
     .images{
         width:100%;
@@ -31,6 +46,7 @@
     .profileContainer{
         padding: 20px 70px;
         display: flex;
+        flex-direction:row;
      
         
         filter: drop-shadow(1px 1px 0.09px #eadddd);
