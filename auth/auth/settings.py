@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',  # for cors errors, if the frontend has different port than django
-    'users'
+    'users',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

@@ -2,7 +2,7 @@
     flex:3;
     position: sticky;
     top: 70px;
-    height: 400px;
+    height: 550px;
     overflow: scroll;
     &::-webkit-scrollbar{
         display:none;
@@ -19,7 +19,9 @@
        
         .item{
             border:2px solid lightgray;
-            filter: drop-shadow(1px 1px 0.09px #eadddd);
+            // filter: drop-shadow(1px 1px 0.09px #eadddd);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            transition: box-shadow 0.3s ease-in-out;
             padding: 20px;
             
             spam{
@@ -44,13 +46,13 @@
 
             }
 
-            .online{
-                display:flex;
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                background-color: limegreen;
-            }
+            // .online{
+            //     display:flex;
+            //     width: 12px;
+            //     height: 12px;
+            //     border-radius: 50%;
+            //     background-color: limegreen;
+            // }
 
             .buttons{
                 display:flex;

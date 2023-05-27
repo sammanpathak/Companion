@@ -3,7 +3,7 @@ import './home.scss';
 import Addpost from '../../components/addpost/Addpost';
 import Posts from '../../components/posts/Posts';
 const Home=()=> {
-
+    
       //For getting the name of the user,
       const [name, setName]=useState('');
       //For calling the backend

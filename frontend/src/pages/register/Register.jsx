@@ -1,80 +1,101 @@
-import {useState} from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 
-import './register.scss'
+import './register.scss';
 
+const Register = () => {
+  const { updateUserCredentials } = useContext(UserContext);
+  const [Username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const navigate = useNavigate();
 
+  const submit = async (event) => {
+    event.preventDefault();
 
-const Register=()=> {
-  
-  //First 'name' is variable and next 'setname' is what changes the function
-  const[Username, setUsername]= useState('');
-  const[email, setEmail]=useState('');
-  const[password,setPassword]=useState('');
-  const[name, setName]=useState('');
-  const[redirect, setRedirect] = useState(false);
+    const nameParts = name.split(' ');
 
-  const submit=async(event)=>{  //the function is made asynchronous
-    event.preventDefault(); //prevent default reloading of the page
-
-    //send a request to backend for registering the user
-    await fetch('http://127.0.0.1:8000/api/register',{
-      method:'POST',  //this is a post request(post and get requests)
-      headers: {'Content-Type':'application/json'},
+    const userDetails = {
+      Username,
+      email,
+      password,
+      name
+    };
+    //send the details to the chat engine for registration
+    await fetch('https://api.chatengine.io/users/', {
+      method: 'POST',
       body: JSON.stringify({
-        Username, //U in username is capitalized to prevent confusion as email is stored as username (for login ) in the database
-        email,
-        password,
-        name
-      })
-    } );
-    //once registered, you can set the redirect to true
-    setRedirect(true); 
-  }
-      //once registered users should be redirected to login
-      if(redirect){
-        return <Navigate to = "/login"/>
-      }
+        username: Username,
+        secret: password,
+        email: email,
+        first_name: nameParts[0].trim(), // Use the first part of name as first_name
+        last_name: nameParts[1] ? nameParts[1].trim() : '', // Use the second part of name as last_name if available
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Private-Key': '9667e56b-3d02-4a76-9553-b5dbdd0338cc',
+      },
+    });
+
+    // Store the user credentials
+    updateUserCredentials(Username, password);
+
+   // Navigate to interest page and pass user details as state
+   navigate('/interest', { state: { userDetails } });
+  };
 
   return (
     <div className='register'>
       <div className='card'>
-      <div className='left'>
-        <h1>Register</h1>
-        <form onSubmit={submit}>
-          <input type='text'placeholder='Username' 
-          onChange={e=>setUsername(e.target.value)} //event listener
-          />
-          
-          <input type='text' placeholder='Email' 
-            onChange={e=>setEmail(e.target.value)} //event listener
-          />
-          <input type='password' placeholder='Password'
-            onChange={e=>setPassword(e.target.value)} //event listener
-          />
-          <input type='text' placeholder='Full-Name' 
-            onChange={e=>setName(e.target.value)} //event listener
-          />
-          <button type="submit">Register</button>
-        </form>
-     
-      </div>
-      <div className='right'>
-      <h1>Find Your Companion</h1>
-      <p>Find people having similar
-                    interests as yourself and build connections.
-                    Explore the feeling of being able to talk 
-                    to someone who shares the same interests as you.  
-      </p>
-      <span>Already have an account?</span>
-      
-      <Link to ='/login'>
-      <button style={{cursor:'pointer'}}>Login</button>
-      </Link>
-      </div>
+        <div className='left'>
+          <h1>Register</h1>
+          <form onSubmit={submit}>
+            <input
+              type='text'
+              placeholder='Username'
+              value={Username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+
+            <input
+              type='text'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Full-Name'
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <button type='submit'>Register</button>
+          </form>
+        </div>
+        <div className='right'>
+          <h1>Find Your Companion</h1>
+          <p>
+            Find people having similar interests as yourself and build
+            connections. Explore the feeling of being able to talk to someone
+            who shares the same interests as you.
+          </p>
+          <span>Already have an account?</span>
+
+          <Link to='/login'>
+            <button style={{ cursor: 'pointer' }}>Login</button>
+          </Link>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

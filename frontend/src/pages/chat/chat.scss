@@ -1,0 +1,11 @@
+.chatpage{
+    height: "100vh";
+.chat{
+    position: sticky;
+    overflow:scroll;
+    top:50px;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+}

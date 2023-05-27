@@ -5,16 +5,46 @@ from .serializers import UserSerializer
 from rest_framework.response import Response
 import jwt
 import datetime
-from .models import User
-# Create your views here.
-
+from .models import User, Interest
+from django.db.models import Count
+# import requests
+# import environ
+# env = environ.Env()
+# environ.Env.read_env()
 
 class RegisterView(APIView):
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        userDetails = request.data.get('userDetails', {})
+        bio = request.data.get('bio', '')
+        interest = request.data.get('interest', [])
+        
+        # Create user serializer instance with userDetails
+        serializer = UserSerializer(data=userDetails)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data)
+        user = serializer.save()
+        
+        # Add bio and interests to user instance
+        user.bio = bio
+        user.interest.set(interest)
+        user.save()
+
+        # #Also register the user to the chat engine page for chat
+
+        # response = requests.post('https://api.chatengine.io/users/',
+        #                      data={
+        #                          "username": request.Username,
+        #                          "secret": request.password,
+        #                          "email": request.email,
+        #                          "first_name": request.name.split[' '], #Split the name into first and last name
+        #                          "last_name": request.name.split[' '],
+        #                      },
+        #                      headers={
+        #                          "Private-Key": env('CHAT_ENGINE_PRIVATE_KEY')}
+        #                      )
+        
+        # Return serialized user data
+        return Response(UserSerializer(user).data)
+
 
 
 class LoginView(APIView):
@@ -93,3 +123,63 @@ class LogOutView(APIView):
 
         }
         return response
+
+#For matching users, 
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+class MatchUsers(APIView):
+    def get(self, request, format=None):
+        # get the token to retrieve the user
+        token = request.COOKIES.get('jwt')
+
+        # decoding it to get the user
+        if not token:
+            raise AuthenticationFailed('Unauthenticated')
+        try:
+            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Unauthenticated')
+
+        # get according to the id
+        user = User.objects.filter(id=payload['id']).first()
+
+        # get users who share at least one interest with the current user, sorted by number of shared interests
+        users = User.objects.annotate(
+            num_interests=Count('interest')
+        ).exclude(
+            id=user.id
+        ).exclude(
+            interest=None
+        ).order_by(
+            '-num_interests'
+        )
+
+        # find top users who share interests with the current user
+        top_users = []
+        for other_user in users:
+            match_count = other_user.interest.filter(
+                id__in=user.interest.all().values_list('id', flat=True)
+            ).count()
+            if match_count > 0:
+                top_users.append((other_user, match_count))
+
+        # sort users by number of matched interests
+        sorted_users = sorted(top_users, key=lambda x: x[1], reverse=True)
+
+        # get the top 6 users with most matched interests
+        recommended_users = []
+        for i in range(min(8, len(sorted_users))):
+            user_data = {
+                'id': sorted_users[i][0].id,
+                'username': sorted_users[i][0].Username,
+                'bio': sorted_users[i][0].bio,
+                'interests': [interest.name for interest in sorted_users[i][0].interest.all()]
+            }
+            recommended_users.append(user_data)
+
+        return Response({'users': recommended_users})
+
+
+
+
